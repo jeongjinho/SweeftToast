@@ -1,16 +1,3 @@
-PODS:
-  - SweeftToast (0.0.1)
-
-DEPENDENCIES:
-  - SweeftToast
-
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - SweeftToast
-
-SPEC CHECKSUMS:
-  SweeftToast: 898089a7eafcf654d71f5ad18541e9847e471c41
-
-PODFILE CHECKSUM: 36a9f5a00e1dafb4340cfbef5e836292d01bf35a
+PODFILE CHECKSUM: 3caf1c65462d70c88f6286cce97087b8a5179f31
 
 COCOAPODS: 1.6.0

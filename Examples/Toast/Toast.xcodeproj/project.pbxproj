@@ -100,7 +100,6 @@
 				2F6AFF96221684A6004936EF /* Sources */,
 				2F6AFF97221684A6004936EF /* Frameworks */,
 				2F6AFF98221684A6004936EF /* Resources */,
-				629CD248A28724ECCB0EB5B5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -158,28 +157,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		629CD248A28724ECCB0EB5B5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Toast/Pods-Toast-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SweeftToast/SweeftToast.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SweeftToast.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Toast/Pods-Toast-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		69B0000A532E6E0251254A05 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
