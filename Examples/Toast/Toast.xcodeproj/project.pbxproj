@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		025E78829B95E0EC4FDA504E /* Pods_Toast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97F86FFB3A6E44A891887A8C /* Pods_Toast.framework */; };
 		2F6AFF9E221684A6004936EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6AFF9D221684A6004936EF /* AppDelegate.swift */; };
 		2F6AFFA0221684A6004936EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6AFF9F221684A6004936EF /* ViewController.swift */; };
 		2F6AFFA3221684A6004936EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F6AFFA1221684A6004936EF /* Main.storyboard */; };
@@ -23,9 +22,6 @@
 		2F6AFFA4221684A7004936EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F6AFFA7221684A7004936EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F6AFFA9221684A7004936EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		36CE2241224577EA8CCF02A2 /* Pods-Toast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toast.release.xcconfig"; path = "Target Support Files/Pods-Toast/Pods-Toast.release.xcconfig"; sourceTree = "<group>"; };
-		97F86FFB3A6E44A891887A8C /* Pods_Toast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Toast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A3ABABDE56A5DA951548D719 /* Pods-Toast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toast.debug.xcconfig"; path = "Target Support Files/Pods-Toast/Pods-Toast.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,30 +29,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				025E78829B95E0EC4FDA504E /* Pods_Toast.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		102A28EB9BA02AA95AA4CC43 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A3ABABDE56A5DA951548D719 /* Pods-Toast.debug.xcconfig */,
-				36CE2241224577EA8CCF02A2 /* Pods-Toast.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		2F6AFF91221684A6004936EF = {
 			isa = PBXGroup;
 			children = (
 				2F6AFF9C221684A6004936EF /* Toast */,
 				2F6AFF9B221684A6004936EF /* Products */,
-				102A28EB9BA02AA95AA4CC43 /* Pods */,
-				A9DC7DD2D5DEC1DDD3E6FD9C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,14 +64,6 @@
 			path = Toast;
 			sourceTree = "<group>";
 		};
-		A9DC7DD2D5DEC1DDD3E6FD9C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				97F86FFB3A6E44A891887A8C /* Pods_Toast.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -96,7 +71,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F6AFFAC221684A7004936EF /* Build configuration list for PBXNativeTarget "Toast" */;
 			buildPhases = (
-				69B0000A532E6E0251254A05 /* [CP] Check Pods Manifest.lock */,
 				2F6AFF96221684A6004936EF /* Sources */,
 				2F6AFF97221684A6004936EF /* Frameworks */,
 				2F6AFF98221684A6004936EF /* Resources */,
@@ -155,31 +129,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		69B0000A532E6E0251254A05 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Toast-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2F6AFF96221684A6004936EF /* Sources */ = {
@@ -331,7 +280,6 @@
 		};
 		2F6AFFAD221684A7004936EF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3ABABDE56A5DA951548D719 /* Pods-Toast.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -350,7 +298,6 @@
 		};
 		2F6AFFAE221684A7004936EF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 36CE2241224577EA8CCF02A2 /* Pods-Toast.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
