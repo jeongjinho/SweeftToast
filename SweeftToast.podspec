@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SweeftToast'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'Simple Toast View.'
   s.description      = <<-DESC
 ToastView is android style alert
