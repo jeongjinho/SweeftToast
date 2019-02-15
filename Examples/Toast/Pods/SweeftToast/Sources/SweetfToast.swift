@@ -1,6 +1,6 @@
 import UIKit
 
-public class Toast: UIView {
+public class TToast: UIView {
     //MARK: - UI Matrix
     private struct UI {
         static let baseMargin =  CGFloat(10)
@@ -67,7 +67,7 @@ public class Toast: UIView {
     }
     
     private func removeExitedToast() {
-        parentViewController?.view.subviews.filter({$0 is Toast && !$0.isEqual(self)}).forEach{$0.removeFromSuperview()}
+        parentViewController?.view.subviews.filter({$0 is TToast && !$0.isEqual(self)}).forEach{$0.removeFromSuperview()}
     }
     
     private func removeCurrentToast() {
