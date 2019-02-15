@@ -9,14 +9,16 @@ public class Toast: UIView {
         static let minimumAlpha = CGFloat(0.0100000003)
         static let buttonSize = CGSize(width: 35.0, height: 35.0)
     }
+    public var toastMessage: String = ""
     var toastMessageLabel: UILabel = UILabel()
     var toastButton: UIButton = UIButton()
     var parentViewController: UIViewController?
     
     //MARK: - UI Initialize
-    convenience init(_ frontViewController: UIViewController) {
+    public convenience init(_ frontViewController: UIViewController, _ message: String = "") {
         self.init(frame: CGRect())
         self.parentViewController = frontViewController
+        self.toastMessage = message
         self.parentViewController?.view.addSubview(self)
         setupUI()
         setupConstraints()
@@ -38,6 +40,7 @@ public class Toast: UIView {
         //Label
         toastMessageLabel.frame = CGRect(x: UI.baseMargin, y: 0, width: UI.baseWidth - UI.baseMargin * 3 - UI.buttonSize.width, height: UI.baseHeight)
         toastMessageLabel.textColor = UIColor.white
+        toastMessageLabel.text = toastMessage
         //Button
         toastButton.frame = CGRect(x: UI.baseWidth - UI.buttonSize.width - UI.baseMargin , y: 0, width: UI.buttonSize.width, height: UI.buttonSize.height)
         [toastMessageLabel,toastButton].forEach{addSubview($0)}
@@ -74,4 +77,3 @@ public class Toast: UIView {
         parentViewController?.view.subviews.filter{$0.isEqual(self)}.forEach{$0.removeFromSuperview()}
     }
 }
-
