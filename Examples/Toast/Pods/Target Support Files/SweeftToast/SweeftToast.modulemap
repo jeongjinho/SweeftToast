@@ -1,0 +1,6 @@
+framework module SweeftToast {
+  umbrella header "SweeftToast-umbrella.h"
+
+  export *
+  module * { export * }
+}
