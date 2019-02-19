@@ -10,8 +10,8 @@ public class Toast: UIView {
         static let buttonSize = CGSize(width: 35.0, height: 35.0)
     }
     public var toastMessage: String = ""
+    public var toastButton: UIButton = UIButton()
     var toastMessageLabel: UILabel = UILabel()
-    var toastButton: UIButton = UIButton()
     var parentViewController: UIViewController?
     
     //MARK: - UI Initialize
@@ -65,6 +65,21 @@ public class Toast: UIView {
             }) { [weak self] _ in
                 guard let `self` = self else {return}
                 self.removeCurrentToast()
+            }
+        }
+    }
+    
+    public func startToastView(duration: CGFloat, after afterHandler: @escaping ()->Void) {
+        removeExitedToast()
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: [.allowUserInteraction], animations: {
+            self.alpha = 1.0
+        }) { _ in
+            UIView.animate(withDuration: TimeInterval(duration), delay: 5.0, options: [.allowUserInteraction], animations: {
+                self.alpha =  UI.minimumAlpha
+            }) { [weak self] _ in
+                guard let `self` = self else {return}
+                self.removeCurrentToast()
+                afterHandler()
             }
         }
     }

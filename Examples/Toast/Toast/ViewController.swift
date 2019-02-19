@@ -10,6 +10,7 @@ import UIKit
 import SweeftToast
 class ViewController: UIViewController {
     let toastButton: UIButton = UIButton.init(type: .custom)
+    let toastafterTypeButton: UIButton = UIButton.init(type: .custom)
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -22,14 +23,25 @@ class ViewController: UIViewController {
         toastButton.setTitleColor(UIColor.black, for: .normal)
         toastButton.addTarget(self, action: #selector(touchUpInsideToastButton), for: .touchUpInside)
         self.view.addSubview(toastButton)
+        
+        toastafterTypeButton.setTitle("show my AfterToast", for: .normal)
+        toastafterTypeButton.setTitleColor(UIColor.black, for: .normal)
+        toastafterTypeButton.addTarget(self, action: #selector(touchUpInsideToastAfterButton), for: .touchUpInside)
+        self.view.addSubview(toastafterTypeButton)
     }
     
     private func setupConstraints() {
         toastButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         toastButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        toastButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        toastButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         toastButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         toastButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        toastafterTypeButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        toastafterTypeButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 60).isActive = true
+        toastafterTypeButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        toastafterTypeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        toastafterTypeButton.translatesAutoresizingMaskIntoConstraints = false
      
     }
     
@@ -37,8 +49,17 @@ class ViewController: UIViewController {
      
         let toast = Toast(self,"hihi")
         toast.toastMessage = "change Message"
-        toast.startToastView(duration: 5.0)
+        toast.startToastView(duration: 3.0)
+
+    }
     
+    @objc func touchUpInsideToastAfterButton() {
+        
+        let toast = Toast(self,"hihi")
+        toast.toastMessage = "change Message"
+        toast.startToastView(duration: 3.0) {
+            print("when Toast is hidden, It's shown")
+        }
         
     }
 }
