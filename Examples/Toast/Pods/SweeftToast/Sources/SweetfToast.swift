@@ -12,7 +12,6 @@ public class Toast: UIView {
     public var toastMessage: String = ""
     public var toastButton: UIButton = UIButton()
     var toastMessageLabel: UILabel = UILabel()
- 
     var parentViewController: UIViewController?
     
     //MARK: - UI Initialize
