@@ -1,5 +1,5 @@
 PODS:
-  - SweeftToast (0.0.4)
+  - SweeftToast (0.0.5)
 
 DEPENDENCIES:
   - SweeftToast
@@ -9,7 +9,7 @@ SPEC REPOS:
     - SweeftToast
 
 SPEC CHECKSUMS:
-  SweeftToast: 9b3de163924726b3c4e2bf8da447f1cb80530f14
+  SweeftToast: 5bfbf3b98b6882eec212404e303426560b11e559
 
 PODFILE CHECKSUM: 7d2f878eb3cdee297a2e3073c1fd1dd222e71b91
 

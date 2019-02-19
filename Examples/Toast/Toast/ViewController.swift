@@ -50,7 +50,7 @@ class ViewController: UIViewController {
     }
     
     @objc func touchUpInsideToastAfterButton() {
-       Toast2(self, "toast is shown") { (toast) in
+       Toast(self, "toast is shown") { (toast) in
             toast.toastButton.setTitle("cancel", for: .normal)
         }.tapOnButton {
             print("button in Toast clicked")
