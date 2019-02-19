@@ -23,7 +23,7 @@ t's just an implementation by creating a view and invoking a startup method!
 Install with CocoaPods by adding the following to your `Podfile`:
 
 ```ruby
-pod 'Toast'
+pod 'SweeftToast'
 ```
 
 
@@ -38,8 +38,9 @@ let toast = Toast(self,"hi Toast") // initial
 toast.toastMessage = "change Message" // set message
 toast.startToastView(duration: 3.0) // show Toast
 
-//  Handler usage, When Toast is hidden 
- let toast = Toast(self, "this is after action Toast") //
+
+// handler usage, When Toast is hidden 
+ let toast = Toast(self, "this is after action Toast") 
  toast.startToastView(duration: 3.0) {
      // When toast is hidden, this execute this handler
      }
