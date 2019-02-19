@@ -42,24 +42,20 @@ class ViewController: UIViewController {
         toastafterTypeButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         toastafterTypeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         toastafterTypeButton.translatesAutoresizingMaskIntoConstraints = false
-     
     }
     
     @objc func touchUpInsideToastButton() {
-     
         let toast = Toast(self,"hihi")
-        toast.toastMessage = "change Message"
         toast.startToastView(duration: 3.0)
-
     }
     
     @objc func touchUpInsideToastAfterButton() {
-        
-        let toast = Toast(self,"hihi")
-        toast.toastMessage = "change Message"
-        toast.startToastView(duration: 3.0) {
-            print("when Toast is hidden, It's shown")
+       Toast(self, "toast is shown") { (toast) in
+            toast.toastButton.setTitle("cancel", for: .normal)
+        }.tapOnButton {
+            print("button in Toast clicked")
+        }.startToastView(duration: 3.0) {
+            print("Toast is hidden")
         }
-        
     }
 }

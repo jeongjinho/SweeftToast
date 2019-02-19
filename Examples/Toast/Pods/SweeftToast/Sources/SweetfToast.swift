@@ -7,22 +7,23 @@ public class Toast: UIView {
         static let baseWidth =  CGFloat(300)
         static let baseHeight = CGFloat(35)
         static let minimumAlpha = CGFloat(0.0100000003)
-        static let buttonSize = CGSize(width: 35.0, height: 35.0)
+        static let buttonSize = CGSize(width: 70.0, height: 35.0)
     }
     public var toastMessage: String = ""
     public var toastButton: UIButton = UIButton()
     var toastMessageLabel: UILabel = UILabel()
- 
     var parentViewController: UIViewController?
     
     //MARK: - UI Initialize
-    public convenience init(_ frontViewController: UIViewController, _ message: String = "") {
+    public convenience init(_ frontViewController: UIViewController, _ message: String = "",  _ setupRemainUI: ((Toast)->Void)? = nil) {
         self.init(frame: CGRect())
         self.parentViewController = frontViewController
         self.toastMessage = message
         self.parentViewController?.view.addSubview(self)
         setupUI()
         setupConstraints()
+        guard let `setupRemainUI` = setupRemainUI  else { return }
+        setupRemainUI(self)
     }
     
     override init(frame: CGRect) {
@@ -44,6 +45,7 @@ public class Toast: UIView {
         toastMessageLabel.text = toastMessage
         //Button
         toastButton.frame = CGRect(x: UI.baseWidth - UI.buttonSize.width - UI.baseMargin , y: 0, width: UI.buttonSize.width, height: UI.buttonSize.height)
+        toastButton.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         [toastMessageLabel,toastButton].forEach{addSubview($0)}
     }
     
@@ -70,6 +72,11 @@ public class Toast: UIView {
         }
     }
     
+    public func tapOnButton(tapAction: @escaping ()->Void) -> Self {
+        toastButton.actionHandle(controlEvents: .touchUpInside, ForAction: tapAction)
+        return self
+    }
+    
     public func startToastView(duration: CGFloat, after afterHandler: @escaping ()->Void) {
         removeExitedToast()
         UIView.animate(withDuration: 0.5, delay: 0.0, options: [.allowUserInteraction], animations: {
@@ -93,3 +100,5 @@ public class Toast: UIView {
         parentViewController?.view.subviews.filter{$0.isEqual(self)}.forEach{$0.removeFromSuperview()}
     }
 }
+
+
