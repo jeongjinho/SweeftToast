@@ -1,8 +1,8 @@
 import UIKit
 
 public class Toast: UIView {
-    //MARK: - UI Matrix
-    private struct UI {
+    // MARK: - UI Matrix
+    private struct UIMatrix {
         static let baseMargin =  CGFloat(10)
         static let baseWidth =  CGFloat(300)
         static let baseHeight = CGFloat(35)
@@ -13,92 +13,103 @@ public class Toast: UIView {
     public var toastButton: UIButton = UIButton()
     var toastMessageLabel: UILabel = UILabel()
     var parentViewController: UIViewController?
-    
-    //MARK: - UI Initialize
-    public convenience init(_ frontViewController: UIViewController, _ message: String = "",  _ setupRemainUI: ((Toast)->Void)? = nil) {
+
+    // MARK: - UI Initialize
+    public convenience init(_ parent: UIViewController, _ message: String, _ setupAfterUI: ((Toast) -> Void)? = nil) {
         self.init(frame: CGRect())
-        self.parentViewController = frontViewController
+        self.parentViewController = parent
         self.toastMessage = message
         self.parentViewController?.view.addSubview(self)
         setupUI()
         setupConstraints()
-        guard let `setupRemainUI` = setupRemainUI  else { return }
-        setupRemainUI(self)
+        guard let `setupAfterUI` = setupAfterUI  else { return }
+        setupAfterUI(self)
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func setupUI() {
         //Container
         self.alpha = 0.0
         self.backgroundColor = UIColor.black.withAlphaComponent(0.55)
         self.layer.cornerRadius = 10.0
         //Label
-        toastMessageLabel.frame = CGRect(x: UI.baseMargin, y: 0, width: UI.baseWidth - UI.baseMargin * 3 - UI.buttonSize.width, height: UI.baseHeight)
+        let totalMargin = UIMatrix.baseMargin * 3
+        toastMessageLabel.frame = CGRect(x: UIMatrix.baseMargin,
+                                         y: 0,
+                                         width: UIMatrix.baseWidth - totalMargin - UIMatrix.buttonSize.width,
+                                         height: UIMatrix.baseHeight)
         toastMessageLabel.textColor = UIColor.white
         toastMessageLabel.text = toastMessage
         //Button
-        toastButton.frame = CGRect(x: UI.baseWidth - UI.buttonSize.width - UI.baseMargin , y: 0, width: UI.buttonSize.width, height: UI.buttonSize.height)
+        toastButton.frame = CGRect(x: UIMatrix.baseWidth - UIMatrix.buttonSize.width - UIMatrix.baseMargin,
+                                   y: 0,
+                                   width: UIMatrix.buttonSize.width,
+                                   height: UIMatrix.buttonSize.height)
         toastButton.titleLabel?.font = UIFont.systemFont(ofSize: 13)
-        [toastMessageLabel,toastButton].forEach{addSubview($0)}
+        [toastMessageLabel, toastButton].forEach {addSubview($0)}
     }
-    
+
     private func setupConstraints() {
-        guard let `parentViewController` = parentViewController else {return}
-        self.centerXAnchor.constraint(equalTo: parentViewController.view.centerXAnchor).isActive = true
-        widthAnchor.constraint(equalToConstant: UI.baseWidth).isActive = true
-        heightAnchor.constraint(equalToConstant: UI.baseHeight).isActive = true
-        bottomAnchor.constraint(equalTo: parentViewController.view.bottomAnchor, constant: -UI.baseHeight).isActive = true
+        guard let `parent` = parentViewController else {return}
+        self.centerXAnchor.constraint(equalTo: parent.view.centerXAnchor).isActive = true
+        widthAnchor.constraint(equalToConstant: UIMatrix.baseWidth).isActive = true
+        heightAnchor.constraint(equalToConstant: UIMatrix.baseHeight).isActive = true
+        bottomAnchor.constraint(equalTo: parent.view.bottomAnchor, constant: -UIMatrix.baseHeight).isActive = true
         translatesAutoresizingMaskIntoConstraints = false
     }
-    //MARK: - UI Actions
+    // MARK: - UI Actions
     public func startToastView(duration: CGFloat) {
         removeExitedToast()
         UIView.animate(withDuration: 0.5, delay: 0.0, options: [.allowUserInteraction], animations: {
             self.alpha = 1.0
         }) { _ in
-            UIView.animate(withDuration: TimeInterval(duration), delay: 5.0, options: [.allowUserInteraction], animations: {
-                self.alpha =  UI.minimumAlpha
+            UIView.animate(withDuration: TimeInterval(duration), delay: 5.0,
+                           options: [.allowUserInteraction],
+                           animations: {
+                            self.alpha =  UIMatrix.minimumAlpha
             }) { [weak self] _ in
                 guard let `self` = self else {return}
                 self.removeCurrentToast()
             }
         }
     }
-    
-    public func tapOnButton(tapAction: @escaping ()->Void) -> Self {
+
+    public func tapOnButton(tapAction: @escaping () -> Void) -> Self {
         toastButton.actionHandle(controlEvents: .touchUpInside, ForAction: tapAction)
         return self
     }
-    
-    public func startToastView(duration: CGFloat, after afterHandler: @escaping ()->Void) {
+
+    public func startToastView(duration: CGFloat, after afterHandler: @escaping () -> Void) {
         removeExitedToast()
         UIView.animate(withDuration: 0.5, delay: 0.0, options: [.allowUserInteraction], animations: {
             self.alpha = 1.0
         }) { _ in
-            UIView.animate(withDuration: TimeInterval(duration), delay: 5.0, options: [.allowUserInteraction], animations: {
-                self.alpha =  UI.minimumAlpha
+            UIView.animate(withDuration: TimeInterval(duration),
+                           delay: 5.0,
+                           options: [.allowUserInteraction],
+                           animations: {
+                            self.alpha =  UIMatrix.minimumAlpha
             }) { [weak self] _ in
-                guard let `self` = self else {return}
+                guard let `self` = self else { return }
                 self.removeCurrentToast()
                 afterHandler()
             }
         }
     }
-    
+
     private func removeExitedToast() {
-        parentViewController?.view.subviews.filter({$0 is Toast && !$0.isEqual(self)}).forEach{$0.removeFromSuperview()}
+        guard let `parent` = parentViewController else {return}
+        parent.view.subviews.filter({$0 is Toast && !$0.isEqual(self)}).forEach {$0.removeFromSuperview()}
     }
-    
+
     private func removeCurrentToast() {
-        parentViewController?.view.subviews.filter{$0.isEqual(self)}.forEach{$0.removeFromSuperview()}
+        parentViewController?.view.subviews.filter {$0.isEqual(self)}.forEach {$0.removeFromSuperview()}
     }
 }
-
-

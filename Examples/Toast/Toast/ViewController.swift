@@ -17,41 +17,41 @@ class ViewController: UIViewController {
         setupConstraints()
     }
 
-    
     private func setupUI() {
         toastButton.setTitle("show my Toast", for: .normal)
         toastButton.setTitleColor(UIColor.black, for: .normal)
         toastButton.addTarget(self, action: #selector(touchUpInsideToastButton), for: .touchUpInside)
         self.view.addSubview(toastButton)
-        
+
         toastafterTypeButton.setTitle("show my AfterToast", for: .normal)
         toastafterTypeButton.setTitleColor(UIColor.black, for: .normal)
         toastafterTypeButton.addTarget(self, action: #selector(touchUpInsideToastAfterButton), for: .touchUpInside)
         self.view.addSubview(toastafterTypeButton)
     }
-    
+
     private func setupConstraints() {
         toastButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         toastButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         toastButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         toastButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         toastButton.translatesAutoresizingMaskIntoConstraints = false
-        
+
         toastafterTypeButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         toastafterTypeButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 60).isActive = true
         toastafterTypeButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         toastafterTypeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         toastafterTypeButton.translatesAutoresizingMaskIntoConstraints = false
     }
-    
+
     @objc func touchUpInsideToastButton() {
-        let toast = Toast(self,"hihi")
+        let toast = Toast(self, "hihi")
         toast.startToastView(duration: 3.0)
     }
-    
+
     @objc func touchUpInsideToastAfterButton() {
        Toast(self, "toast is shown") { (toast) in
             toast.toastButton.setTitle("cancel", for: .normal)
+            toast.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.75)
         }.tapOnButton {
             print("button in Toast clicked")
         }.startToastView(duration: 3.0) {
