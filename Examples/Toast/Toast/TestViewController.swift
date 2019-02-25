@@ -52,10 +52,31 @@ class TestViewController: UIViewController {
         tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        //navigationBarItem
+        let allReadButton = UIButton(type: .custom)
+        allReadButton.addTarget(self, action:  #selector(touchUpInsideAlllRoadButton), for: .touchUpInside)
+        allReadButton.setTitle("모두 읽음", for: .normal)
+        allReadButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        allReadButton.setTitleColor(UIColor.white, for: .normal)
+         //navigationBarItem
+        let moreButton = UIButton(type: .custom)
+        moreButton.frame = CGRect.init(x: 30, y: 0, width: 30, height: 30)
+        moreButton.setImage(#imageLiteral(resourceName: "more.png"), for: .normal)
+       let menuBarItem = UIBarButtonItem(customView: moreButton)
+        moreButton.imageView?.contentMode = .scaleAspectFit
+        let currWidth = menuBarItem.customView?.widthAnchor.constraint(equalToConstant: 20)
+        currWidth?.isActive = true
+        let currHeight = menuBarItem.customView?.heightAnchor.constraint(equalToConstant: 20)
+        currHeight?.isActive = true
+        moreButton.setTitleColor(UIColor.white, for: .normal)
+        self.navigationItem.setRightBarButtonItems([menuBarItem,UIBarButtonItem(customView: allReadButton)], animated: false)
+    }
+    @objc private func touchUpInsideAlllRoadButton() {
+        print("모두 읽음")
     }
     @available(iOS 11.0, *)
     private func contextualDeleteButton(indexPath: IndexPath) -> UIContextualAction {
-      return UIContextualAction(style: .destructive, title: "Delete") { (action, view, comleteHandler) in
+      return UIContextualAction(style: .destructive, title: "Delete") { (_, _, comleteHandler) in
         Toast(self, "Alarm has been deleted", { (toast) in
             toast.toastButton.setTitle("cancel", for: .normal)
             toast.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.75)
@@ -65,7 +86,7 @@ class TestViewController: UIViewController {
     }
     @available(iOS 11.0, *)
     private func contextualMoreButton(indexPath: IndexPath) -> UIContextualAction {
-        return UIContextualAction(style: .normal, title: "modify") { (action, view, comleteHandler) in
+        return UIContextualAction(style: .normal, title: "modify") { (_, _, comleteHandler) in
             Toast(self, "more Button Clicked").startToastView(duration: 3.0)
             comleteHandler(false)
         }
