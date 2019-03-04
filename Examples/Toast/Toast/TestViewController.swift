@@ -34,7 +34,10 @@ class TestViewController: UIViewController {
                           Alarm(title: "Shared in Facebook post. Caption has started the broadcast.", time: "9hour after", contentImage:#imageLiteral(resourceName: "hulk"), profileImage:#imageLiteral(resourceName: "captionAmerica"), isClicked: true),
                           Alarm(title: "The widow has started the broadcast. I uploaded the video. Please check the answer.", time: "12hour after", contentImage:#imageLiteral(resourceName: "hulk"), profileImage: #imageLiteral(resourceName: "blackWidow"), isClicked: false),
                           Alarm(title: "followed in Facebook. hulk has started", time: "11hour after", contentImage:#imageLiteral(resourceName: "hulk"), profileImage: #imageLiteral(resourceName: "blackWidow"), isClicked: false),
-                          Alarm(title: "tor added three pictures to the Avengers group.", time: "12hour after", contentImage:#imageLiteral(resourceName: "hulk"), profileImage:#imageLiteral(resourceName: "blackWidow"), isClicked: true)
+                          Alarm(title: "tor added three pictures to the Avengers group.", time: "12hour after", contentImage:#imageLiteral(resourceName: "hulk"), profileImage:#imageLiteral(resourceName: "blackWidow"), isClicked: true),
+             Alarm(title: "tor added three pictures to the Avengers group.", time: "12hour after", contentImage:#imageLiteral(resourceName: "hulk"), profileImage:#imageLiteral(resourceName: "blackWidow"), isClicked: true), Alarm(title: "tor added three pictures to the Avengers group.", time: "12hour after", contentImage:#imageLiteral(resourceName: "hulk"), profileImage:#imageLiteral(resourceName: "blackWidow"), isClicked: true),
+             Alarm(title: "tor added three pictures to the Avengers group.", time: "12hour after", contentImage:#imageLiteral(resourceName: "hulk"), profileImage:#imageLiteral(resourceName: "blackWidow"), isClicked: true),
+             Alarm(title: "tor added three pictures to the Avengers group.", time: "12hour after", contentImage:#imageLiteral(resourceName: "hulk"), profileImage:#imageLiteral(resourceName: "blackWidow"), isClicked: true), Alarm(title: "tor added three pictures to the Avengers group.", time: "12hour after", contentImage:#imageLiteral(resourceName: "hulk"), profileImage:#imageLiteral(resourceName: "blackWidow"), isClicked: true), Alarm(title: "tor added three pictures to the Avengers group.", time: "12hour after", contentImage:#imageLiteral(resourceName: "hulk"), profileImage:#imageLiteral(resourceName: "blackWidow"), isClicked: true), Alarm(title: "tor added three pictures to the Avengers group.", time: "12hour after", contentImage:#imageLiteral(resourceName: "hulk"), profileImage:#imageLiteral(resourceName: "blackWidow"), isClicked: false), Alarm(title: "tor added three pictures to the Avengers group.", time: "12hour after", contentImage:#imageLiteral(resourceName: "hulk"), profileImage:#imageLiteral(resourceName: "blackWidow"), isClicked: false), Alarm(title: "tor added three pictures to the Avengers group.", time: "12hour after", contentImage:#imageLiteral(resourceName: "hulk"), profileImage:#imageLiteral(resourceName: "blackWidow"), isClicked: false), Alarm(title: "tor added three pictures to the Avengers group.", time: "12hour after", contentImage:#imageLiteral(resourceName: "hulk"), profileImage:#imageLiteral(resourceName: "blackWidow"), isClicked: false), Alarm(title: "tor added three pictures to the Avengers group.", time: "12hour after", contentImage:#imageLiteral(resourceName: "hulk"), profileImage:#imageLiteral(resourceName: "blackWidow"), isClicked: true), Alarm(title: "tor added three pictures to the Avengers group.", time: "12hour after", contentImage:#imageLiteral(resourceName: "hulk"), profileImage:#imageLiteral(resourceName: "blackWidow"), isClicked: false)
                             ]
         setupUI()
     }
@@ -74,7 +77,11 @@ class TestViewController: UIViewController {
         self.navigationItem.setRightBarButtonItems([moreBarButtonItem, allReadBarButtonItem], animated: false)
     }
     @objc private func touchUpInsideAlllRoadButton() {
-        print("모두 읽음")
+        for (index, _) in alarmDataArray.enumerated() {
+            alarmDataArray[index].isClicked = true
+        }
+        self.tableView.reloadData()
+   
     }
     @available(iOS 11.0, *)
     private func contextualDeleteButton(indexPath: IndexPath) -> UIContextualAction {
@@ -97,7 +104,7 @@ class TestViewController: UIViewController {
 
 extension TestViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return alarmDataArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ToastTestTableViewCell.reuseIdentifier, for: indexPath) as? ToastTestTableViewCell
@@ -155,22 +162,17 @@ public class Toast2: UIView {
         self.toastMessage = message
         self.parentViewController?.view.addSubview(self)
         setupUI()
-        if let `setupAfterUI` = setupAfterUI  {
-            
+        if let `setupAfterUI` = setupAfterUI {
              setupAfterUI(self)
         }
-       
         setupConstraints(size: getTextSize(message: message))
     }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     private func setupUI() {
         //Container
         self.alpha = 0.0
@@ -186,7 +188,6 @@ public class Toast2: UIView {
         toastButton.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         [toastMessageLabel, toastButton].forEach {addSubview($0)}
     }
-    
     private func setupConstraints(size: CGSize) {
         guard let `parent` = parentViewController else {return}
         self.centerXAnchor.constraint(equalTo: parent.view.centerXAnchor).isActive = true
@@ -204,8 +205,6 @@ public class Toast2: UIView {
             toastButton.widthAnchor.constraint(equalToConstant: UIMatrix.buttonSize.width).isActive = true
             toastButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
         }
-        
-       
         toastButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
         toastButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
         toastButton.translatesAutoresizingMaskIntoConstraints = false
@@ -230,7 +229,6 @@ public class Toast2: UIView {
             }) { [weak self] _ in
                 guard let `self` = self else {return}
                 self.removeCurrentToast()
-                
             }
         }
     }
@@ -238,7 +236,6 @@ public class Toast2: UIView {
         toastButton.actionHandle(controlEvents: .touchUpInside, ForAction: tapAction)
         return self
     }
-    
     public func startToastView(duration: CGFloat, after afterHandler: @escaping () -> Void) {
         removeExitedToast()
         UIView.animate(withDuration: 0.5, delay: 0.0, options: [.allowUserInteraction], animations: {
@@ -252,7 +249,6 @@ public class Toast2: UIView {
             }) { [weak self] _ in
                 guard let `self` = self else { return }
                 self.removeCurrentToast()
-                
                 afterHandler()
             }
         }
