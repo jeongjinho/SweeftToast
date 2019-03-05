@@ -9,14 +9,6 @@
 import UIKit
 import SweeftToast
 
-struct Alarm {
-    var title: String
-    var time: String
-    var contentImage: UIImage
-    var profileImage: UIImage
-    var isClicked: Bool = false
-}
-
 class TestViewController: UIViewController {
     private var alarmDataArray: Array<Alarm> = []
     private struct ViewUI {
@@ -79,7 +71,7 @@ class TestViewController: UIViewController {
     @available(iOS 11.0, *)
     private func contextualDeleteButton(indexPath: IndexPath) -> UIContextualAction {
       return UIContextualAction(style: .destructive, title: "Delete") { (_, _, comleteHandler) in
-        Toast(self, "Showing Alarm", { (toast) in
+        Toast(self, "Delete topic", { (toast) in
             toast.toastButton.setTitle("cancel", for: .normal)
             toast.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.75)
         }).startToastView(duration: 3.0)

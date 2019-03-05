@@ -19,6 +19,7 @@
 		2FE5620D222E561700ED5FC4 /* UIButton_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5620C222E561700ED5FC4 /* UIButton_Extension.swift */; };
 		2FE5620F222E566B00ED5FC4 /* UIView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5620E222E566B00ED5FC4 /* UIView_Extension.swift */; };
 		2FE56214222E585900ED5FC4 /* UITableView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE56213222E585900ED5FC4 /* UITableView_Extension.swift */; };
+		2FE56219222E5B2B00ED5FC4 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE56218222E5B2B00ED5FC4 /* Alarm.swift */; };
 		F8EF23DC9EE8881F562563D9 /* Pods_Toast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9202FB13FC8D4FDA3758C607 /* Pods_Toast.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		2FE5620C222E561700ED5FC4 /* UIButton_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton_Extension.swift; sourceTree = "<group>"; };
 		2FE5620E222E566B00ED5FC4 /* UIView_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView_Extension.swift; sourceTree = "<group>"; };
 		2FE56213222E585900ED5FC4 /* UITableView_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView_Extension.swift; sourceTree = "<group>"; };
+		2FE56218222E5B2B00ED5FC4 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		9202FB13FC8D4FDA3758C607 /* Pods_Toast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Toast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C80653FAB4044565C5B6F858 /* Pods-Toast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toast.release.xcconfig"; path = "Target Support Files/Pods-Toast/Pods-Toast.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +79,7 @@
 			children = (
 				2F6AFFA9221684A7004936EF /* Info.plist */,
 				2F6AFF9D221684A6004936EF /* AppDelegate.swift */,
+				2FE56217222E5B0F00ED5FC4 /* Model */,
 				2FE56215222E590200ED5FC4 /* VIewController */,
 				2FE56216222E590A00ED5FC4 /* View */,
 				2FE56212222E56E600ED5FC4 /* Storyboard */,
@@ -130,6 +133,14 @@
 				2F0B1C18221E3D3900D72AB7 /* ToastTestTableViewCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2FE56217222E5B0F00ED5FC4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FE56218222E5B2B00ED5FC4 /* Alarm.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		32A0D32B6614D993767F101F /* Pods */ = {
@@ -292,6 +303,7 @@
 				2FE5620D222E561700ED5FC4 /* UIButton_Extension.swift in Sources */,
 				2F77BB39221D37600066ABFA /* TestViewController.swift in Sources */,
 				2FE56214222E585900ED5FC4 /* UITableView_Extension.swift in Sources */,
+				2FE56219222E5B2B00ED5FC4 /* Alarm.swift in Sources */,
 				2F0B1C19221E3D3900D72AB7 /* ToastTestTableViewCell.swift in Sources */,
 				2F6AFF9E221684A6004936EF /* AppDelegate.swift in Sources */,
 				2F77BB3F221D41430066ABFA /* UIColor_Extension.swift in Sources */,
