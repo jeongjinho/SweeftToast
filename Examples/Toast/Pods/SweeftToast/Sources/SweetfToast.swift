@@ -22,7 +22,6 @@ public class Toast: UIView {
         self.toastMessage = message
         self.parentViewController?.view.addSubview(self)
         setupUI()
-       
         setupConstraints(size: getTextSize(message: message))
         guard let `setupAfterUI` = setupAfterUI  else { return }
         setupAfterUI(self)
@@ -60,9 +59,6 @@ public class Toast: UIView {
 
     private func setupConstraints(size: CGSize) {
         guard let `parent` = parentViewController else {return}
-        print(size)
-      
-        
         self.centerXAnchor.constraint(equalTo: parent.view.centerXAnchor).isActive = true
         widthAnchor.constraint(equalToConstant: UIMatrix.baseWidth).isActive = true
         heightAnchor.constraint(equalToConstant: UIMatrix.baseHeight).isActive = true
@@ -107,7 +103,6 @@ public class Toast: UIView {
                 afterHandler()
             }
         }
-        
     }
 
     private func removeExitedToast() {
@@ -118,7 +113,6 @@ public class Toast: UIView {
     private func removeCurrentToast() {
         parentViewController?.view.subviews.filter {$0.isEqual(self)}.forEach {$0.removeFromSuperview()}
     }
-    
     private func getTextSize(message: String) -> CGSize {
         let font = UIFont.systemFont(ofSize: 12)
         let fontAttributes = [NSAttributedString.Key.font: font]
