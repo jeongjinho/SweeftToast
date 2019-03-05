@@ -171,7 +171,6 @@
 				2F6AFF96221684A6004936EF /* Sources */,
 				2F6AFF97221684A6004936EF /* Frameworks */,
 				2F6AFF98221684A6004936EF /* Resources */,
-				8FB5950CE537C72B719A5AAC /* [CP] Embed Pods Frameworks */,
 				2F01A9A8221BF6E100C45E31 /* ShellScript */,
 			);
 			buildRules = (
@@ -248,28 +247,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint \n";
-		};
-		8FB5950CE537C72B719A5AAC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Toast/Pods-Toast-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SweeftToast/SweeftToast.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SweeftToast.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Toast/Pods-Toast-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		AD030AB23E57215A41EAE5E2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
