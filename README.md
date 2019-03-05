@@ -26,7 +26,9 @@ Install with CocoaPods by adding the following to your `Podfile`:
 pod 'SweeftToast'
 ```
 
-
+Screenshots
+---------
+![SweeftToast_ScreenShot](Toast_mockup.png)
 
 ### Basic Example
 
