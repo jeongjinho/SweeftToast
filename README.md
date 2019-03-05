@@ -44,6 +44,11 @@ toast.startToastView(duration: 3.0) // show Toast
  toast.startToastView(duration: 3.0) {
      // When toast is hidden, this execute this handler
      }
+// show multiLine Text
+ Toast(self, "Delete topic and update Topic data!", { (toast) in
+            toast.toastButton.setTitle("cancel", for: .normal)
+            toast.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.75)
+        }).textLine(2).viewWidth(300).startToastView(duration: 3.0)
 ```
 
 
