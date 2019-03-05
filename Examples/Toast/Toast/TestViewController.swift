@@ -9,6 +9,14 @@
 import UIKit
 import SweeftToast
 
+struct Alarm {
+    var title: String
+    var time: String
+    var contentImage: UIImage
+    var profileImage: UIImage
+    var isClicked: Bool = false
+}
+
 class TestViewController: UIViewController {
     private var alarmDataArray: Array<Alarm> = []
     private struct ViewUI {
@@ -32,7 +40,7 @@ class TestViewController: UIViewController {
     }
     private func setupUI() {
         // navigation
-        navigationItem.title = "Topic"
+        navigationItem.title = "Alarm"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.barTintColor = UIColor.init(rgb: 0x216ae0)
         //tableView
@@ -66,22 +74,26 @@ class TestViewController: UIViewController {
         self.navigationItem.setRightBarButtonItems([moreBarButtonItem, allReadBarButtonItem], animated: false)
     }
     @objc private func touchUpInsideAlllRoadButton() {
-        print("Read All")
+        for (index, _) in alarmDataArray.enumerated() {
+            alarmDataArray[index].isClicked = true
+        }
+        self.tableView.reloadData()
+   
     }
     @available(iOS 11.0, *)
     private func contextualDeleteButton(indexPath: IndexPath) -> UIContextualAction {
       return UIContextualAction(style: .destructive, title: "Delete") { (_, _, comleteHandler) in
-        Toast(self, "Delete topic", { (toast) in
+        Toast(self, "Delete Topic", { (toast) in
             toast.toastButton.setTitle("cancel", for: .normal)
             toast.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.75)
-        }).startToastView(duration: 3.0)
+        }).textLine().viewWidth(300.0).startToastView(duration: 3.0)
             comleteHandler(false)
         }
     }
     @available(iOS 11.0, *)
     private func contextualMoreButton(indexPath: IndexPath) -> UIContextualAction {
         return UIContextualAction(style: .normal, title: "modify") { (_, _, comleteHandler) in
-            Toast(self, "more Button Clickedmore Button Clicked").startToastView(duration: 3.0)
+            Toast(self, "more Button Clickedmore Button Clickedmore Button Clickedmore Button Clickedmore Button Clickedmore Button Clicked").startToastView(duration: 3.0)
             comleteHandler(false)
         }
     }
@@ -89,7 +101,7 @@ class TestViewController: UIViewController {
 
 extension TestViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return alarmDataArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ToastTestTableViewCell.reuseIdentifier, for: indexPath) as? ToastTestTableViewCell

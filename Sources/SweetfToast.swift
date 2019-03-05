@@ -15,7 +15,7 @@ public class Toast: UIView {
     public var toastButton: UIButton = UIButton()
     var toastMessageLabel: UILabel = UILabel()
     var parentViewController: UIViewController?
-    var multiLines: Bool = true {
+    public var multiLines: Bool = true {
         didSet {
             self.toastMessageLabel.numberOfLines = multiLines ? 0 : 1
         }
@@ -130,7 +130,7 @@ public class Toast: UIView {
         let fontAttributes = [NSAttributedString.Key.font: font]
         return (message as NSString).size(withAttributes: fontAttributes)
     }
-    func height(constraintedWidth width: CGFloat, font: UIFont) -> CGFloat {
+    public func height(constraintedWidth width: CGFloat, font: UIFont) -> CGFloat {
         let label =  UILabel(frame: CGRect(x: 0, y: 0, width: width, height: .greatestFiniteMagnitude))
         label.numberOfLines = 0
         label.text = toastMessage
@@ -138,11 +138,11 @@ public class Toast: UIView {
         label.sizeToFit()
         return label.frame.height
     }
-    func textLine(_ lines: Int = 0) -> Self {
+    public func textLine(_ lines: Int = 0) -> Self {
         toastMessageLabel.numberOfLines = lines
         return self
     }
-    func viewWidth(_ width: CGFloat) -> Self {
+    public func viewWidth(_ width: CGFloat) -> Self {
         self.widthAnchor.constraint(equalToConstant: width).isActive = true
         leadconstraint?.isActive = false
         trailconstraint?.isActive = false
