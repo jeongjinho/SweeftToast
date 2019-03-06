@@ -1,7 +1,0 @@
-disabled_rules:
-- line_length
-- nesting
-
-included:
-excluded:
-
