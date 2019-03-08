@@ -74,8 +74,11 @@ class TestViewController: UIViewController {
         Toast(self, "Delete topic and update your currnet Topic Data! good!", { (toast) in
             toast.toastButton.setTitle("cancel", for: .normal)
             toast.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.75)
-        }).textLine(0).viewWidth(300).startToastView(duration: 3.0)
+        }).tapOnButton {
+            print("cancel Button Clicked")
+            }.textLine(0).viewWidth(300).startToastView(duration: 3.0)
             comleteHandler(false)
+            
         }
     }
     @available(iOS 11.0, *)
@@ -103,13 +106,12 @@ extension TestViewController: UITableViewDelegate, UITableViewDataSource {
         alarmDataArray[indexPath.row].isClicked = true
         cell?.contentView.backgroundColor = UIColor.init(rgb: 0xFFFFFF)
     }
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .none
-    }
+//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
+//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+//        return .none
+//    }
     @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
             let deleteButton = contextualDeleteButton(indexPath: indexPath)

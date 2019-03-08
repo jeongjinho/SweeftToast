@@ -82,7 +82,6 @@ public class Toast: UIView {
         toastMessageLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
         toastMessageLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
         toastMessageLabel.translatesAutoresizingMaskIntoConstraints = false
-        toastButton.layoutIfNeeded()
     }
     // MARK: - UI Actions
     public func startToastView(duration: CGFloat) {
