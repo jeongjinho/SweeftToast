@@ -71,7 +71,7 @@ class TestViewController: UIViewController {
     @available(iOS 11.0, *)
     private func contextualDeleteButton(indexPath: IndexPath) -> UIContextualAction {
       return UIContextualAction(style: .destructive, title: "Delete") { (_, _, comleteHandler) in
-        Toast(self, "Delete topic and update your currnet Topic Data! good!", { (toast) in
+        Toast("Delete topic and update your currnet Topic Data! good!", { (toast) in
             toast.toastButton.setTitle("cancel", for: .normal)
             toast.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.75)
         }).tapOnButton {
@@ -83,10 +83,12 @@ class TestViewController: UIViewController {
     }
     @available(iOS 11.0, *)
     private func contextualMoreButton(indexPath: IndexPath) -> UIContextualAction {
+        
+       
         return UIContextualAction(style: .normal, title: "modify") { (_, _, comleteHandler) in
-            Toast(self, "more Button Clickedmore Button Clicked", { (toast) in
+            Toast("more Button Clickedmore Button Clicked", { (toast) in
                 toast.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.75)
-            }).startToastView(duration: 3.0)
+            }, direction: .center).startToastView(duration: 3.0)
             comleteHandler(false)
         }
     }
