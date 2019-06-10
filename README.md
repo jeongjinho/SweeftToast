@@ -34,7 +34,7 @@ Screenshots
 
 -------
 
-```swift 
+```swift
 // basic usage
 let toast = Toast(self,"hi Toast") // initial
 toast.toastMessage = "change Message" // set message
@@ -53,7 +53,6 @@ toast.startToastView(duration: 3.0) // show Toast
         }).textLine(2).viewWidth(300).startToastView(duration: 3.0)
 ```
 
-### more Example
 
 
 MIT License
