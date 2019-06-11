@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SweeftToast
+
 
 class TestViewController: UIViewController {
     private var alarmDataArray: Array<Alarm> = []
@@ -71,17 +71,27 @@ class TestViewController: UIViewController {
     @available(iOS 11.0, *)
     private func contextualDeleteButton(indexPath: IndexPath) -> UIContextualAction {
       return UIContextualAction(style: .destructive, title: "Delete") { (_, _, comleteHandler) in
-        Toast(self, "Delete topic", { (toast) in
+        Toast("Delete topic and update your currnet Topic Data! good!", { (toast) in
             toast.toastButton.setTitle("cancel", for: .normal)
             toast.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.75)
-        }).startToastView(duration: 3.0)
+        }).tapOnButton {
+            print("cancel Button Clicked")
+            }.textLine(0).viewWidth(300).startToastView(duration: 3.0)
             comleteHandler(false)
+            
         }
     }
     @available(iOS 11.0, *)
     private func contextualMoreButton(indexPath: IndexPath) -> UIContextualAction {
+        
+       
         return UIContextualAction(style: .normal, title: "modify") { (_, _, comleteHandler) in
-            Toast(self, "more Button Clickedmore Button Clicked").startToastView(duration: 3.0)
+            Toast("more Button Clickedmore Button Clicked", { (toast) in
+                toast.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.75)
+            }, direction: .center).touchupInside {
+               let second = SecondViewController.init()
+                self.navigationController?.pushViewController(second, animated: true)
+                }.startToastView(duration: 3.0)
             comleteHandler(false)
         }
     }
@@ -101,13 +111,12 @@ extension TestViewController: UITableViewDelegate, UITableViewDataSource {
         alarmDataArray[indexPath.row].isClicked = true
         cell?.contentView.backgroundColor = UIColor.init(rgb: 0xFFFFFF)
     }
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .none
-    }
+//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
+//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+//        return .none
+//    }
     @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
             let deleteButton = contextualDeleteButton(indexPath: indexPath)
