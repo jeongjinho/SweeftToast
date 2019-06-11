@@ -47,7 +47,7 @@ public class Toast: UIView {
         toastMessageLabel.frame = CGRect.zero
         toastMessageLabel.textColor = UIColor.white
         toastMessageLabel.text = toastMessage
-        toastMessageLabel.lineBreakMode = .byWordWrapping
+        toastMessageLabel.lineBreakMode = .byCharWrapping
         //Button
         toastButton.frame = CGRect.zero
         toastButton.titleLabel?.font = UIFont.systemFont(ofSize: 13)
@@ -66,9 +66,11 @@ public class Toast: UIView {
         if toastButton.titleLabel?.text == "" || toastButton.titleLabel?.text == nil {
             toastButton.widthAnchor.constraint(equalToConstant: 0).isActive = true
             toastButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+            self.toastMessageLabel.textAlignment = .center
         } else {
             toastButton.widthAnchor.constraint(equalToConstant: UIMatrix.buttonSize.width).isActive = true
             toastButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
+            self.toastMessageLabel.textAlignment = .left
         }
         toastButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
         toastButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true

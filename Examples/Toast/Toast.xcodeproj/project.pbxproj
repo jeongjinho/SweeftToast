@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F01A9AA221BF7B800C45E31 /* .swiftLint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2F01A9A9221BF7B800C45E31 /* .swiftLint.yml */; };
 		2F0B1C19221E3D3900D72AB7 /* ToastTestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0B1C17221E3D3900D72AB7 /* ToastTestTableViewCell.swift */; };
 		2F0B1C1A221E3D3900D72AB7 /* ToastTestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F0B1C18221E3D3900D72AB7 /* ToastTestTableViewCell.xib */; };
 		2F6AFF9E221684A6004936EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6AFF9D221684A6004936EF /* AppDelegate.swift */; };
@@ -16,6 +15,7 @@
 		2F6AFFA8221684A7004936EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F6AFFA6221684A7004936EF /* LaunchScreen.storyboard */; };
 		2F77BB39221D37600066ABFA /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77BB38221D37600066ABFA /* TestViewController.swift */; };
 		2F77BB3F221D41430066ABFA /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77BB3E221D41430066ABFA /* UIColor_Extension.swift */; };
+		2FC36F10222FBBAA001E6105 /* SweetfToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC36F0F222FBBAA001E6105 /* SweetfToast.swift */; };
 		2FE5620D222E561700ED5FC4 /* UIButton_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5620C222E561700ED5FC4 /* UIButton_Extension.swift */; };
 		2FE5620F222E566B00ED5FC4 /* UIView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5620E222E566B00ED5FC4 /* UIView_Extension.swift */; };
 		2FE56214222E585900ED5FC4 /* UITableView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE56213222E585900ED5FC4 /* UITableView_Extension.swift */; };
@@ -25,7 +25,6 @@
 
 /* Begin PBXFileReference section */
 		20E2D9FB6858DD77D3294F51 /* Pods-Toast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toast.debug.xcconfig"; path = "Target Support Files/Pods-Toast/Pods-Toast.debug.xcconfig"; sourceTree = "<group>"; };
-		2F01A9A9221BF7B800C45E31 /* .swiftLint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftLint.yml; sourceTree = "<group>"; };
 		2F0B1C17221E3D3900D72AB7 /* ToastTestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastTestTableViewCell.swift; sourceTree = "<group>"; };
 		2F0B1C18221E3D3900D72AB7 /* ToastTestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToastTestTableViewCell.xib; sourceTree = "<group>"; };
 		2F6AFF9A221684A6004936EF /* Toast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toast.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,6 +35,7 @@
 		2F6AFFA9221684A7004936EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F77BB38221D37600066ABFA /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		2F77BB3E221D41430066ABFA /* UIColor_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
+		2FC36F0F222FBBAA001E6105 /* SweetfToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetfToast.swift; sourceTree = "<group>"; };
 		2FE5620C222E561700ED5FC4 /* UIButton_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton_Extension.swift; sourceTree = "<group>"; };
 		2FE5620E222E566B00ED5FC4 /* UIView_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView_Extension.swift; sourceTree = "<group>"; };
 		2FE56213222E585900ED5FC4 /* UITableView_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView_Extension.swift; sourceTree = "<group>"; };
@@ -78,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				2F6AFFA9221684A7004936EF /* Info.plist */,
+				2FC36F0F222FBBAA001E6105 /* SweetfToast.swift */,
 				2F6AFF9D221684A6004936EF /* AppDelegate.swift */,
 				2FE56217222E5B0F00ED5FC4 /* Model */,
 				2FE56215222E590200ED5FC4 /* VIewController */,
@@ -104,7 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				2F6AFFA4221684A7004936EF /* Assets.xcassets */,
-				2F01A9A9221BF7B800C45E31 /* .swiftLint.yml */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -221,7 +221,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F0B1C1A221E3D3900D72AB7 /* ToastTestTableViewCell.xib in Resources */,
-				2F01A9AA221BF7B800C45E31 /* .swiftLint.yml in Resources */,
 				2F6AFFA8221684A7004936EF /* LaunchScreen.storyboard in Resources */,
 				2F6AFFA5221684A7004936EF /* Assets.xcassets in Resources */,
 				2F6AFFA3221684A6004936EF /* Main.storyboard in Resources */,
@@ -246,7 +245,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint \n";
+			shellScript = " 
+";
 		};
 		AD030AB23E57215A41EAE5E2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -282,6 +282,7 @@
 				2FE56214222E585900ED5FC4 /* UITableView_Extension.swift in Sources */,
 				2FE56219222E5B2B00ED5FC4 /* Alarm.swift in Sources */,
 				2F0B1C19221E3D3900D72AB7 /* ToastTestTableViewCell.swift in Sources */,
+				2FC36F10222FBBAA001E6105 /* SweetfToast.swift in Sources */,
 				2F6AFF9E221684A6004936EF /* AppDelegate.swift in Sources */,
 				2F77BB3F221D41430066ABFA /* UIColor_Extension.swift in Sources */,
 				2FE5620F222E566B00ED5FC4 /* UIView_Extension.swift in Sources */,
@@ -440,6 +441,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = SweeftToastExample.Toast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
