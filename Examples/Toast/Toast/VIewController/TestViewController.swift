@@ -88,7 +88,10 @@ class TestViewController: UIViewController {
         return UIContextualAction(style: .normal, title: "modify") { (_, _, comleteHandler) in
             Toast("more Button Clickedmore Button Clicked", { (toast) in
                 toast.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.75)
-            }, direction: .center).startToastView(duration: 3.0)
+            }, direction: .center).touchupInside {
+               let second = SecondViewController.init()
+                self.navigationController?.pushViewController(second, animated: true)
+                }.startToastView(duration: 3.0)
             comleteHandler(false)
         }
     }
