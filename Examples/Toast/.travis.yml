@@ -1,0 +1,7 @@
+language: objective-c
+branches:
+  only:
+    - master
+    - /^release-.*$/
+
+script: xcodebuild -workspace Toast.xcworkspace -scheme Toast -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
