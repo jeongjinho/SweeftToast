@@ -1,0 +1,5 @@
+languge: objective-c
+xcode_workspace: examples/Toast/Toast.xcworkspace
+osx_image: xcode10.2
+xcode_scheme: Toast
+xcode_destination: platform=iOS Simulator,OS=11.3,name=iPhone X
